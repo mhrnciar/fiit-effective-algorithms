@@ -10,3 +10,9 @@ add_executable(Uloha1-2 uloha1-2.c)
 add_executable(Uloha2-1 uloha2-1.c)
 
 add_executable(Uloha2-2 uloha2-2.c)
+add_executable(Uloha2-2a uloha2-2a.c)
+
+add_executable(Uloha3-1 uloha3-1.c)
+
+add_executable(Uloha3-2 uloha3-2.c)
+add_executable(Uloha3-2a uloha3-2a.c)
