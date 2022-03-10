@@ -16,6 +16,7 @@
 
 #define DEBUG 1
 
+// Check if number is a power of 5
 int is_power(long long n) {
     if (n < 125)
         return (n == 1 || n == 5 || n == 25);
@@ -26,6 +27,7 @@ int is_power(long long n) {
         return is_power(n / 125);
 }
 
+// Change binary string to number
 long long binary_to_long (const char *s, int front, int back) {
     long long ans = 0;
     for (int i = front; i < back; i++) {
@@ -41,10 +43,12 @@ int min_cuts(char *s, unsigned long n) {
     }
 
     for (int i = 1; i <= n; i++) {
+        // Remove leading 0s
         if (s[i - 1] == '0')
             continue;
 
         for (int j = 0; j < i; j++) {
+            // Remove leading 0s
             if (s[j] == '0')
                 continue;
 
@@ -52,9 +56,11 @@ int min_cuts(char *s, unsigned long n) {
             if (!is_power(num))
                 continue;
 
+            // Save the number in array, if it's smaller than arbitrary value
             arr[i] = arr[i] < arr[j] + 1 ? arr[i] : arr[j] + 1;
         }
     }
+    // Return result if found, otherwise return -1
     return ((arr[n] < n + 1) ? arr[n] : -1);
 }
 

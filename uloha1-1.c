@@ -21,6 +21,7 @@
 
 #define DEBUG 0
 
+// Sorting function to sort in descending order
 int cmpfunc(const void *a, const void *b) {
     return (*(int *) b - *(int *)a);
 }
@@ -45,6 +46,7 @@ int main() {
             printf("\n");
         }
 
+        // Sort cars in descending order
         qsort(cars, n_cars, sizeof(int), cmpfunc);
 
         if (DEBUG) {
@@ -55,8 +57,9 @@ int main() {
             printf("\n");
         }
 
+        // If first n heaviest vehicles and sum their weight, if it's over max capacity,
+        // the convoy cannot go through the bridge in any order
         int sum = 0;
-
         for (int i = 0; i < max_vehicles; i++) {
             sum += cars[i];
         }

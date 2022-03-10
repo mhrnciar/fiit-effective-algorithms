@@ -41,6 +41,9 @@ int main() {
 
         int *wins = (int *) calloc((B + 1), sizeof(int));
 
+        // Using DP, first set sure wins in first places, then always look at already initialised element
+        // to which the player would get after taking specific amount of pencils and flip result (since the
+        // players don't play at once, but in turns)
         for (int i = 1; i <= B; i++) {
             for (int j = 0; j < n; j++) {
                 if (moves[j] == 1) {
@@ -67,6 +70,7 @@ int main() {
             }
         }
 
+        // Count possible wins
         int count = 0;
         for (int i = A; i <= B; i++) {
             if (wins[i] == 1)
