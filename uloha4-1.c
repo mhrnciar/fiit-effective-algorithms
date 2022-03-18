@@ -13,62 +13,90 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
+#define DEBUG 0
 
-#define DEBUG 1
+typedef struct node {
+    int touched;
+    int untouched;
+} NODE;
 
 int main() {
-    int n, width, height, rows, slope;
+    int n, width, height;
+    long num;
+    NODE arr[202][5002] = {0};
     scanf("%d", &n);
 
     while (n > 0) {
         scanf("%d %d", &width, &height);
-        rows = height + 1;
+        width += 1;
 
-        int **arr = (int **) calloc(rows, sizeof(int *));
-        for (int i = 0; i < rows; i++) {
-            arr[i] = (int *) calloc(width, sizeof(int));
-        }
-        arr[height][0] = 1;
+        if (height == 1)
+            arr[height][0].touched = 1;
+        else
+            arr[height][0].untouched = 1;
 
         // Fill left (rising) half of array
-        for (int j = 1; j <= width / 2; j++) {
+        for (int j = 1; j < width - height; j++) {
             for (int i = height - 1; i >= 0; i--) {
-                // If we are in upper row, sum only numbers from previous column, same and lower rows,
-                // otherwise sum numbers from previous column, upper, same and lower rows
-                arr[i][j] = i == 0 ? arr[i][j-1] + arr[i+1][j-1] : arr[i-1][j-1] + arr[i][j-1] + arr[i+1][j-1];
+                // If we reached the top of hill, add to the paths that already touched the top the paths
+                // that are one column and one row behind, which could become paths that touched the top
+                if (i == 0) {
+                    num = arr[i][j-1].touched + arr[i + 1][j - 1].touched + arr[i + 1][j - 1].untouched;
+                    arr[i][j].touched = num > 100000007 ? num % 100000007 : num;
+                    continue;
+                }
+
+                // Add paths that touched the top from previous column together as well as paths that haven't
+                num = arr[i][j - 1].touched + arr[i - 1][j - 1].touched + arr[i + 1][j - 1].touched;
+                arr[i][j].touched = num > 100000007 ? num % 100000007 : num;
+
+                num = arr[i][j - 1].untouched + arr[i - 1][j - 1].untouched + arr[i + 1][j - 1].untouched;
+                arr[i][j].untouched = num > 100000007 ? num % 100000007 : num;
             }
         }
 
         // Fill right (declining) half of array
-        slope = 0;
-        for (int j = width / 2 + 1; j < width; j++) {
+        for (int j = width - height, slope = 0; j < width; j++, slope++) {
             for (int i = height - 1; i > slope; i--) {
-                // If we are in upper row, sum only numbers from previous column, same and lower rows,
-                // otherwise sum numbers from previous column, upper, same and lower rows, and lower
-                // maximum height of hill by one every column
-                arr[i][j] = i == 0 ? arr[i][j-1] + arr[i+1][j-1] : arr[i-1][j-1] + arr[i][j-1] + arr[i+1][j-1];
+                // Repeat the path count propagation, but with declining slope
+                num = arr[i][j - 1].touched + arr[i - 1][j - 1].touched + arr[i + 1][j - 1].touched;
+                arr[i][j].touched = num > 100000007 ? num % 100000007 : num;
+
+                num = arr[i][j - 1].untouched + arr[i - 1][j - 1].untouched + arr[i + 1][j - 1].untouched;
+                arr[i][j].untouched = num > 100000007 ? num % 100000007 : num;
             }
-            slope++;
         }
 
         // Set last number in lower right corner
         arr[height][width - 1] = arr[height - 1][width - 2];
 
         if (DEBUG) {
-            for (int i = 0; i < rows; i++) {
+            for (int i = 0; i < height + 1; i++) {
                 for (int j = 0; j < width; j++) {
-                    printf("%10d", arr[i][j]);
+                    printf("%10d", arr[i][j].touched);
+                }
+                printf("\n");
+            }
+            printf("\n");
+
+            for (int i = 0; i < height + 1; i++) {
+                for (int j = 0; j < width; j++) {
+                    printf("%10d", arr[i][j].untouched);
                 }
                 printf("\n");
             }
         }
 
+        // Print result
+        printf("%d\n", arr[height][width - 1].touched);
 
+        // Clear the array
         for (int i = 0; i <= height; i++) {
-            free(arr[i]);
+            for (int j = 0; j <= width; j++) {
+                arr[i][j].touched = 0;
+                arr[i][j].untouched = 0;
+            }
         }
-        free(arr);
         n--;
     }
 
