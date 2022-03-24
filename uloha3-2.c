@@ -8,6 +8,14 @@
  * obsahujúci jedno číslo: najmenší počet časti na ktorý je potrebné zadané číslo rozdeliť tak, aby
  * vzniknuté časti každá predstavovala binárny zápis nejakej mocniny čísla 5, resp. vypíšte -1 ak sa
  * to nedá tak rozdeliť.
+ *
+ * Ukážka vstupu:
+ * 101101101
+ * 0000
+ *
+ * Výstup pre ukážkový vstup:
+ * 3
+ * -1
  */
 
 #include <stdio.h>

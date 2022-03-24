@@ -9,6 +9,16 @@
  * Výstup: Pre každé zadanie úlohy na vstupe vypíšte na štandardný výstup jeden riadok obsahujúci jedno
  * číslo - najmenší počet znamienok sčítania, ktoré je nutné do reťazca na vstupe vložiť, aby výsledný
  * výraz mal požadovaný súčet. Ak nie je možné súčet dosiahnuť, vypíšte IMPOSSIBLE
+ *
+ * Ukážka vstupu:
+ * 999 27
+ * 101 2
+ * 999 100
+ *
+ * Výstup pre ukážkový vstup:
+ * 2
+ * 1
+ * IMPOSSIBLE
  */
 
 #include <stdio.h>

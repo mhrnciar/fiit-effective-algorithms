@@ -14,6 +14,14 @@
  * Obmedzenia:
  * 1 <= N <= 50,
  * 101 <= x[i] <= 300
+ *
+ * Ukážka vstupu:
+ * 5 150 150 150 150 150
+ * 9 101 101 101 101 101 101 101 101 101
+ *
+ * Výstup pre ukážkový vstup:
+ * 3
+ * 5
  */
 
 #include <stdio.h>

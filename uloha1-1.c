@@ -14,6 +14,14 @@
  * 1 <= K <= M,
  * 1 <= M <= 9,
  * 1 <= h[i] <= 1000
+ *
+ * Ukážka vstupu:
+ * 1234 3 4 1000 200 4 30
+ * 20 4 5 10 10 10 10 10
+ *
+ * Výstup pre ukážkový vstup:
+ * Ano
+ * Nie
  */
 
 #include <stdio.h>

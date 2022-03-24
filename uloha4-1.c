@@ -10,6 +10,15 @@
  * nulovú výšku a nikde inde nesmie byť výška ≤ 0 (takže kopec napríklad nemôže začínať alebo končiť
  * rovinkou). Keďže takých kopcov môže byť veľmi veľa, vypíšte počet kopcov ako zvyšok po delení číslom
  * 100 000 007.
+ *
+ * Ukážka vstupu:
+ * 2
+ * 6 2
+ * 30 5
+ *
+ * Výstup pre ukážkový vstup:
+ * 7
+ * 11640085
  */
 
 #include <stdio.h>
