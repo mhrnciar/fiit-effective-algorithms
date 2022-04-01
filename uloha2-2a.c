@@ -22,113 +22,55 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
-#define DEBUG 1
+int len(long number) {
+    if (number == 0) {
+        return 1;
+    }
+
+    return floor (log10 (abs (number))) + 1;
+}
+
+
+int extract(long number, int left, int right) {
+    return (number / (long) pow(10, right)) % (long) pow(10, len(number) - left - right);
+}
+
 
 int main() {
-    char input[11], c;
-    int result;
-    int arr[10][10] = {0};
-    int numbers[10] = {0};
+    long x, target;
+    while (scanf("%ld %ld", &x, &target) > 0) {
+        int current_best = 1 << 30;
 
-    while (scanf("%s %d", input, &result) > 0) {
-        int n = 0;
-        char *p = input;
+        for (long i = 0; i < pow(2, len(x)); i++) {
+            long out = 0, previous = 0, ones = -1;
 
-        while(p[n] != '\0') {
-            c = p[n];
-            numbers[n] = c - '0';
-            n++;
-        }
-
-        if (DEBUG) {
-            for (int i = 0; i < n; i++) {
-                printf("%d ", numbers[i]);
-            }
-            printf("\n");
-        }
-
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                if (i == 0) {
-                    if (j == 0) {
-                        arr[0][0] = numbers[0];
-                        continue;
-                    }
-                    arr[i][j] = arr[i][j-1] * 10 + numbers[j];
-                }
-                else {
-                    arr[i][j] = arr[i][j-1] * 10 + numbers[j];
-                }
-            }
-        }
-
-        if (DEBUG) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    printf("%10d\t", arr[i][j]);
-                }
-                printf("\n");
-            }
-        }
-
-        int remaining = result, found = 0, plus_count = 0, limit = n, i = n - 1, j;
-
-        while (i >= 0) {
-            j = n - 1;
-            while (j >= i && j >= 0) {
-                remaining -= arr[i][j];
-
-                if (remaining < 0) {
-                    remaining += arr[i][j];
-                    j--;
-                }
-                else if (remaining > 0) {
-                    int diff = 0, temp = arr[i][j];
-
-                    while (temp > 1) {
-                        temp /= 10;
-                        diff++;
-                    }
-                    if (diff == 0){
-                        diff = 1;
-                    }
-
-                    j -= diff;
-                    i -= diff;
-
-                    if (arr[i][j] != 0) {
-                        plus_count++;
-                    }
-                    else {
-                        plus_count--;
-                    }
-                }
-                else {
-                    found = 1;
-                    break;
+            for (int j = 1; j <= len(x); j++) {
+                if ((i >> (len(x) - j)) & 1) {
+                    out += extract(x, previous, len(x) - j);
+                    previous = j;
+                    ones++;
                 }
             }
 
-            // TODO: Skusiť i od 0 a postupne prehlbovať tabuľku až kým sa nenájde riešenie
-            if (found) {
-                break;
-            }
-            else if (i <= 0 && j <= 0 && limit >= 0){
-                remaining = result;
-                plus_count = 0;
-                limit--;
-                i = limit;
+            if (previous != len(x)) {
+                out += extract(x, previous, 0);
+                ones++;
             }
 
-            i--;
+            if (out == target && ones < current_best) {
+                current_best = ones;
+            }
         }
 
-        if (found && plus_count < 10) {
-            printf("%d\n", plus_count);
-        }
-        else {
+        if (current_best == (1 << 30)) {
             printf("IMPOSSIBLE\n");
+        }
+
+        else {
+            printf("%d\n", current_best);
         }
     }
 

@@ -23,7 +23,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define DEBUG 1
+#define DEBUG 0
 #define MAX 1024
 
 typedef struct node {
@@ -43,6 +43,10 @@ int DFS(int n) {
         NODE *node = stack[top - 1];
         top--;
 
+        if (DEBUG) {
+            printf("%d %d: %d, %d\n\n", node->i, node->j, node->remaining, node->count);
+        }
+
         // If number in array is too large, move to the left
         if (node->remaining - arr[node->i][node->j] < 0 && arr[node->i][node->j] != 0) {
             NODE *new = (NODE *) malloc(sizeof(NODE));
@@ -58,19 +62,26 @@ int DFS(int n) {
         else if (node->remaining - arr[node->i][node->j] > 0 || (node->remaining - arr[node->i][node->j] == 0 && node->j != n - 1)) {
             int temp_j = node->i;
             while (temp_j <= node->j - 1) {
-                NODE *new = (NODE *) malloc(sizeof(NODE));
-                new->i = node->i;
-                new->j = temp_j;
-                new->remaining = node->remaining;
-                new->count = node->count;
-                stack[top] = new;
-                top++;
+                if (arr[node->i][temp_j] != 0) {
+                    NODE *new = (NODE *) malloc(sizeof(NODE));
+                    new->i = node->i;
+                    new->j = temp_j;
+                    new->remaining = node->remaining;
+                    new->count = node->count;
+                    stack[top] = new;
+                    top++;
+                }
                 temp_j++;
+            }
+
+            if (node->i == 0 && node->remaining - arr[node->i][node->j] == 0 && arr[node->i][node->j] > 1) {
+                free(node);
+                continue;
             }
 
             // Calculate how many rows to descend
             int diff = 0, temp = arr[node->i][node->j];
-            if (temp == 10) {
+            if (temp % 10 == 0) {
                 diff = 1;
             }
             else {
@@ -186,32 +197,3 @@ int main() {
 
     return 0;
 }
-
-/*
-99999 45
-1110 3
-0123456789 45
-99999 100
-382834 100
-9230560001 71
-0000000000 0
-111 3
-1111111111 10
-1212121212 15
-1213121712 21
-0123456789 81
-8833614925 100
-0525222922 93
-3769558148 99
-1210102121 100
-0220120200 63
-0000000001 1
-1000000000 1
-1000000001 2
-1000000001 11
-1001098 100
-99999 100
-382834 100
-1110 3
-1 1
- */
