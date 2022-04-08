@@ -22,6 +22,7 @@ add_executable(Uloha5-2 uloha5-2.c)
 
 add_executable(Uloha6-1 uloha6-1.c)
 add_executable(Uloha6-2 uloha6-2.c)
+add_executable(Uloha6-2a uloha6-2a.c)
 
 add_executable(Uloha7-1 uloha7-1.c)
 add_executable(Uloha7-2 uloha7-2.c)
