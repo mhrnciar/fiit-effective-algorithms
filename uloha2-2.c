@@ -57,6 +57,7 @@ int DFS(int n) {
             stack[top] = new;
             top++;
         }
+
         // If number in array is smaller, make new nodes from all numbers left from selected number
         // and add new node with remaining amount reduced by the selected number
         else if (node->remaining - arr[node->i][node->j] > 0 || (node->remaining - arr[node->i][node->j] == 0 && node->j != n - 1)) {
@@ -74,6 +75,8 @@ int DFS(int n) {
                 temp_j++;
             }
 
+            // Prevent part of string in first row from filling the sum, unless the part equals 1
+            // 1001098 100 would be filled in first row (index 0-2)
             if (node->i == 0 && node->remaining - arr[node->i][node->j] == 0 && arr[node->i][node->j] > 1) {
                 free(node);
                 continue;
@@ -102,6 +105,7 @@ int DFS(int n) {
                 top++;
             }
         }
+
         // If the remaining amount is 0 and we are at the end of array, return count of plus signs
         else if (node->remaining - arr[node->i][node->j] == 0 && node->j == n - 1) {
             return node->count;

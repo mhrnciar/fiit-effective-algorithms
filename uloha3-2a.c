@@ -5,7 +5,7 @@
  *
  * Na štandardnom vstupe je viac riadkov, na každom z nich je číslo zapísané v binárnom zápise, ktorého
  * dĺžka je najviac 50 číslic. Pre každé číslo na vstupe postupne vypíšte jeden riadok na výstup,
- * obsahujúci jedno číslo: najmenší počet časti na ktorý je potrebné zadané číslo rozdeliť tak, aby
+ * obsahujúci jedno číslo: najmenší počet časti, na ktorý je potrebné zadané číslo rozdeliť tak, aby
  * vzniknuté časti každá predstavovala binárny zápis nejakej mocniny čísla 5, resp. vypíšte -1 ak sa
  * to nedá tak rozdeliť.
  *
@@ -80,5 +80,6 @@ int main() {
         unsigned long len = strlen(num);
         printf("%d\n", min_cuts(num, len));
     }
+
     return 0;
 }

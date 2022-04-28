@@ -63,17 +63,17 @@ int main() {
         for (int i = 1; i <= B; i++) {
             for (int j = 0; j < n; j++) {
                 if (moves[j] == 1) {
-                    wins[i] = !wins[i-1];
+                    wins[i] = wins[i-1] == 1 ? 0 : 1;
 
-                    if (wins[i]) {
+                    if (wins[i] == 1) {
                         break;
                     }
                 }
 
-                if (moves[j] <= i) {
-                    wins[i] = !wins[i - moves[j]];
+                if (moves[j] < i + 1) {
+                    wins[i] = wins[i - moves[j]] == 1 ? 0 : 1;
 
-                    if (wins[i]) {
+                    if (wins[i] == 1) {
                         break;
                     }
                 }
@@ -88,7 +88,7 @@ int main() {
 
         // Count possible wins
         int count = 0;
-        for (int i = A; i <= B; i++) {
+        for (int i = A; i < B + 1; i++) {
             if (wins[i] == 1)
                 count++;
         }
