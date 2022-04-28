@@ -31,6 +31,57 @@
 #include <stdlib.h>
 
 #define DEBUG 1
+int MIN_PATH = 9999;
+
+void TSP(int *str, int left, int right, int *path, int n, int **arr) {
+    int temp;
+
+    // If left equals right (we are at the last house), calculate the total path and if it's smaller than the previous
+    // shortest path, save the length and copy the path
+    if (left == right) {
+        if (DEBUG) {
+            for (int i = 0; i < right; i++) {
+                printf("%d ", str[i]);
+            }
+            printf("\n");
+        }
+
+        int act = 0, z;
+
+        // Calculate the length of the current path
+        for (int m = 0, k = 0; m < right; m++) {
+            z = str[m];
+            act += arr[k][z - 1];
+            k = z - 1;
+        }
+
+        // Save new minimum cost and shortest path
+        if (act < MIN_PATH) {
+            MIN_PATH = act;
+
+            for (int i = 0; i < right; i++) {
+                path[i] = str[i];
+            }
+        }
+    }
+
+    // If left and right are not equal, try all switches of selected house with the remaining ones
+    else {
+        for (int i = left; i < right; i++) {
+            // First, switch houses and call recursion with switched order
+            temp = str[left];
+            str[left] = str[i];
+            str[i] = temp;
+
+            TSP(str, left + 1, right, path, n, arr);
+
+            // Return to previous order
+            temp = str[left];
+            str[left] = str[i];
+            str[i] = temp;
+        }
+    }
+}
 
 int main() {
     int n;
@@ -54,9 +105,34 @@ int main() {
             }
             printf("\n");
         }
+        printf("\n");
     }
 
-    // TODO: PROBLÉM OBCHODNÉHO CESTUJÚCEHO
+    // Permutation array of houses with currently considered order
+    int *str = (int *) calloc(n-1, sizeof(int));
+    // Array for the shortest path
+    int *path = (int *) calloc (n, sizeof(int));
+
+    // Create first order as 1 -> 2 -> 3 -> ... -> n
+    for (int i = 2, j = 0; i <= n; i++) {
+        str[j] = i;
+        j++;
+    }
+
+    TSP(str, 0, n - 1, path, n, arr);
+
+    printf("%d\n", MIN_PATH);
+
+    printf("1 ");
+    for (int i = 0; i < n - 1; i++) {
+        printf("%d ", path[i]);
+    }
+
+    // Clean up
+    for (int i = 0; i < n; i++) {
+        free(arr[i]);
+    }
+    free(arr);
 
     return 0;
 }
