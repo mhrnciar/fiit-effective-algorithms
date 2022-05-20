@@ -15,21 +15,19 @@ add_executable(Uloha3-2a uloha3-2a.c)
 
 add_executable(Uloha4-1 uloha4-1.c)
 add_executable(Uloha4-2 uloha4-2.c)
-add_executable(Uloha4-2a uloha4-2a.c)
 
 add_executable(Uloha5-1 uloha5-1.c)
 add_executable(Uloha5-1a uloha5-1a.c)
 add_executable(Uloha5-2 uloha5-2.c)
-add_executable(Uloha5-2a uloha5-2a.c)
 
 add_executable(Uloha6-1 uloha6-1.c)
 add_executable(Uloha6-2 uloha6-2.c)
 
 add_executable(Uloha7-1 uloha7-1.c)
 add_executable(Uloha7-2 uloha7-2.c)
+add_executable(Uloha7-2a uloha7-2a.c)
 
 add_executable(Uloha8-1 uloha8-1.c)
-add_executable(Uloha8-1a uloha8-1a.c)
 add_executable(Uloha8-2 uloha8-2.c)
 add_executable(Uloha8-2a uloha8-2a.c)
 
