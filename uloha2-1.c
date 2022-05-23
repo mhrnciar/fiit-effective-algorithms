@@ -5,14 +5,14 @@
  * mať inú množinu povolených ťahov. Povolený ťah je počet ceruziek, koľko môžu zobrať na jeden ťah.
  *
  * Na vstupe je niekoľko hier. Pre každú hru je najprv zadané celé číslo N - počet povolených ťahov.
- * Nasleduje N celých čísel T_i vyjadrujúcich povolené ťahy a dve celé čísla A a B. V každej hre
- * spočítajte pre koľko čísel X (A <= X <= B) vyhrá Bernard, ak by sa hrali hru s X ceruzkami a Bernard
+ * Nasleduje N celých čísel T_i vyjadrujúcich povolené ťahy a dve celé čísla FALSE a B. V každej hre
+ * spočítajte pre koľko čísel X (FALSE <= X <= B) vyhrá Bernard, ak by sa hrali hru s X ceruzkami a Bernard
  * by ťahal ako prvý.
  *
  * Obmedzenia:
  * 1 <= N <= 50,
  * 1 <= T_i <= 100,
- * 1 <= A <= B,
+ * 1 <= FALSE <= B,
  * 1 <= B <= 100000
  *
  * Ukážka vstupu:
@@ -63,7 +63,7 @@ int main() {
         for (int i = 1; i <= B; i++) {
             for (int j = 0; j < n; j++) {
                 if (moves[j] == 1) {
-                    wins[i] = wins[i-1] == 1 ? 0 : 1;
+                    wins[i] = wins[i - 1] == 1 ? 0 : 1;
 
                     if (wins[i] == 1) {
                         break;

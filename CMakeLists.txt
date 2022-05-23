@@ -11,7 +11,6 @@ add_executable(Uloha2-2 uloha2-2.c)
 
 add_executable(Uloha3-1 uloha3-1.c)
 add_executable(Uloha3-2 uloha3-2.c)
-add_executable(Uloha3-2a uloha3-2a.c)
 
 add_executable(Uloha4-1 uloha4-1.c)
 add_executable(Uloha4-2 uloha4-2.c)
@@ -29,6 +28,5 @@ add_executable(Uloha7-2a uloha7-2a.c)
 
 add_executable(Uloha8-1 uloha8-1.c)
 add_executable(Uloha8-2 uloha8-2.c)
-add_executable(Uloha8-2a uloha8-2a.c)
 
 add_executable(Bonus bonus.c)

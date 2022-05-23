@@ -34,7 +34,7 @@
 
 #define DEBUG 0
 
-// Compare first pos-2 numbers in array with the currently selected number and add 1 to position,
+// Compare first pos-2 numbers in val with the currently selected number and add 1 to position,
 // if the difference is bigger than the limit
 int *check_pos(int *arr, int pos, int limit, int *count) {
     int *out = (int *) malloc(pos * sizeof(int));

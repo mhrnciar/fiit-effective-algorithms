@@ -65,7 +65,7 @@ int main() {
             printf("\n");
         }
 
-        // If first n heaviest vehicles and sum their weight, if it's over max capacity,
+        // If first n heaviest vehicles and sum their weight, if it's over max val,
         // the convoy cannot go through the bridge in any order
         int sum = 0;
         for (int i = 0; i < max_vehicles; i++) {

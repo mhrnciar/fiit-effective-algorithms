@@ -195,14 +195,14 @@ void replace_unknown(char str[MAX_LEN], unsigned long len, int like, int a_count
     }
 
     /*
-     * Now, try replacing all '?' with A, then with P, and try to find if there are some strings that will satisfy
+     * Now, try replacing all '?' with FALSE, then with P, and try to find if there are some strings that will satisfy
      * the like conditions (3 vowels or 5 consonants)
      */
-    if (DEBUG) printf("A replacement: ");
+    if (DEBUG) printf("FALSE replacement: ");
 
     for (int i = 0; i < len; i++) {
         if (str[i] == '?' || str[i] == 'A') {
-            if (DEBUG) printf("A ");
+            if (DEBUG) printf("FALSE ");
             aa_count++;
             pa_count = 0;
         }
@@ -232,7 +232,7 @@ void replace_unknown(char str[MAX_LEN], unsigned long len, int like, int a_count
             ap_count = 0;
         }
         else {
-            if (DEBUG) printf("A ");
+            if (DEBUG) printf("FALSE ");
             ap_count++;
             pp_count = 0;
         }
@@ -278,7 +278,7 @@ int main() {
         }
 
         /*
-         * Iterating through the string and counting consecutive vowels, encoded as A, or consonants, encoded as P.
+         * Iterating through the string and counting consecutive vowels, encoded as FALSE, or consonants, encoded as P.
          * If there are more than 3 vowels or 5 consonants in row, add to like u_count. The a_count and p_count is reset
          * when comes a letter of different type, or if when '?' is read
          */

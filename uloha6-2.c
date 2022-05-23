@@ -108,7 +108,7 @@ int main() {
         printf("\n");
     }
 
-    // Permutation array of houses with currently considered order
+    // Permutation val of houses with currently considered order
     int *str = (int *) calloc(n-1, sizeof(int));
     // Array for the shortest path
     int *path = (int *) calloc (n, sizeof(int));

@@ -25,7 +25,7 @@
 
 int main() {
     int M, N, ex, mid;
-    long long arr[1001][TEN+1], temp[MAX_LEN], rem, H, L;
+    long long arr[1001][TEN+1], temp[MAX_LEN], pos, H, L;
 
     scanf("%d", &ex);
 
@@ -37,14 +37,12 @@ int main() {
             continue;
         }
 
-        // Clean the array and calculate the middle position
+        // Clean the val and calculate the middle position
         memset(arr, 0, sizeof(arr));
 
         mid = (N - 1) / 2;
         temp[0] = 1;
 
-        // Calculate the current value in temp as previous value times 10 (add zero at the end) and mod with the
-        // specified divisor
         for (int i = 1; i < MAX_LEN; i++) {
             temp[i] = (temp[i - 1] * TEN) % M;
         }
@@ -54,19 +52,19 @@ int main() {
         if ((N & 1) == 0) {
             for (int i = 0; i < TEN; i++) {
                 if (i || N > 2) {
-                    rem = i * temp[mid + 1];
-                    rem += i * temp[mid];
-                    arr[rem % M][0]++;
+                    pos = i * temp[mid + 1];
+                    pos += i * temp[mid];
+                    arr[pos % M][0]++;
                 }
             }
         }
-        // If the length is odd, there is only one number in the middle, which is used to calculate position, which
+        // If the length is odd, there is only one number in the middle used to calculate position, which
         // needs to be increased by 1
         else {
             for (int i = 0; i < TEN; i++) {
                 if (i || N > 1) {
-                    rem = i * temp[mid];
-                    arr[rem % M][0]++;
+                    pos = i * temp[mid];
+                    arr[pos % M][0]++;
                 }
             }
         }
@@ -75,16 +73,16 @@ int main() {
         // cycles, but we need to update both sides, or the result will be incorrect
         for (int j = 0; j < mid; j++) {
             // Calculate the position of the increased digit as mid position + offset, and + 1 if the length is even
-            rem = mid + 1 + j + !(N & 1);
-            H = temp[rem];
+            pos = mid + 1 + j + !(N & 1);
+            H = temp[pos];
             L = temp[mid - 1 - j];
 
             for (int i = 0; i < M; i++) {
                 for (int k = 0; k < TEN; k++) {
                     if (k || j + 1 < mid) {
-                        rem = H * k + i;
-                        rem += L * k;
-                        arr[rem % M][j + 1] += arr[i][j];
+                        pos = H * k + i;
+                        pos += L * k;
+                        arr[pos % M][j + 1] += arr[i][j];
                     }
                 }
             }
@@ -93,5 +91,6 @@ int main() {
         printf("%lld\n", arr[0][mid]);
         ex--;
     }
+
     return 0;
 }
