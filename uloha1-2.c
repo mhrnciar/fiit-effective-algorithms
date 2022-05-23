@@ -51,7 +51,7 @@ int main() {
         int *buckets = (int *) calloc(200, sizeof(int));
 
         // If there are more than 200 boxes in one group, it has to be packed into one truck alone,
-        // otherwise add it to counting val
+        // otherwise add it to counting array
         for (int i = 0; i < n_boxes; i++) {
             if (boxes[i] >= 200)
                 trucks++;
@@ -68,7 +68,7 @@ int main() {
             printf("\n");
         }
 
-        // Go through counting val and try to pair groups - if sum of two groups is <= 300, put them into
+        // Go through counting array and try to pair groups - if sum of two groups is <= 300, put them into
         // one truck, otherwise pack only larger group
         int front = 101, back = 199;
         while (front <= back) {

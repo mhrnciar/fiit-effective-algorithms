@@ -44,7 +44,7 @@ int main() {
         else
             arr[height][0].untouched = 1;
 
-        // Fill left (rising) half of val
+        // Fill left (rising) half of array
         for (int j = 1; j < width - height; j++) {
             for (int i = height - 1; i >= 0; i--) {
                 // If we reached the top of hill, add to the paths that already touched the top the paths
@@ -64,7 +64,7 @@ int main() {
             }
         }
 
-        // Fill right (declining) half of val
+        // Fill right (declining) half of array
         for (int j = width - height, slope = 0; j < width; j++, slope++) {
             for (int i = height - 1; i > slope; i--) {
                 // Repeat the path count propagation, but with declining slope
@@ -99,7 +99,7 @@ int main() {
         // Print result
         printf("%d\n", arr[height][width - 1].touched);
 
-        // Clear the val
+        // Clean up
         for (int i = 0; i <= height; i++) {
             for (int j = 0; j <= width; j++) {
                 arr[i][j].touched = 0;

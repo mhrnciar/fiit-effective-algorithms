@@ -41,7 +41,7 @@ int main() {
         int *seats = (int *) malloc(m * sizeof(int));
         int max_people = 0, temp, total_seats = 0, total_people = 0, fail = 0;
 
-        // Count max number of people in circle while loading it to val, and add to total
+        // Count max number of people in circle while loading it to array, and add to total
         for (int i = 0; i < n; i++) {
             scanf("%d", &people[i]);
             max_people = people[i] > max_people ? people[i] : max_people;
@@ -61,10 +61,10 @@ int main() {
             printf("0\n");
         }
         else {
-            // Sort val of circles in descending order
+            // Sort array of circles in descending order
             qsort(people, n, sizeof(int), cmpfunc);
 
-            // Print sorted val
+            // Print sorted array
             if (DEBUG) {
                 for (int i = 0; i < n; i++) {
                     printf("%d ", people[i]);

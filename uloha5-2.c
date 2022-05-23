@@ -105,7 +105,7 @@ int can_finish(char *str, int right, int endrem) {
 
         // If the end hasn't been removed, and we are in the right string
         if (!endrem && right && find == len) {
-            // If there are only left-facing characters < and the length of temp is odd, add one < to val remaining,
+            // If there are only left-facing characters < and the length of temp is odd, add one < to array remaining,
             // if the length is even, add two
             if (type_temp == 1) {
                 if (len_temp % 2)
@@ -129,7 +129,7 @@ int can_finish(char *str, int right, int endrem) {
 
         // If the end hasn't been removed and we are in the left string
         else if (!endrem && !right && !prev) {
-            // Similar to code above, if there are only right-facing characters >, add to val remaining >
+            // Similar to code above, if there are only right-facing characters >, add to array remaining >
             if (type_temp == 2) {
                 if (len_temp % 2)
                     remaining[count++] = '>';

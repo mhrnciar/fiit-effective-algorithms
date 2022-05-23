@@ -47,7 +47,7 @@ int DFS(int n) {
             printf("%d %d: %d, %d\n\n", node->i, node->j, node->remaining, node->count);
         }
 
-        // If number in val is too large, move to the left
+        // If number in array is too large, move to the left
         if (node->remaining - arr[node->i][node->j] < 0 && arr[node->i][node->j] != 0) {
             NODE *new = (NODE *) malloc(sizeof(NODE));
             new->i = node->i;
@@ -58,7 +58,7 @@ int DFS(int n) {
             top++;
         }
 
-        // If number in val is smaller, make new nodes from all numbers left from selected number
+        // If number in array is smaller, make new nodes from all numbers left from selected number
         // and add new node with remaining amount reduced by the selected number
         else if (node->remaining - arr[node->i][node->j] > 0 || (node->remaining - arr[node->i][node->j] == 0 && node->j != n - 1)) {
             int temp_j = node->i;
@@ -94,7 +94,7 @@ int DFS(int n) {
                 } while (temp > 0);
             }
 
-            // If the calculated row doesn't overflow the val, make new node
+            // If the calculated row doesn't overflow the array, make new node
             if (node->i + diff < n) {
                 NODE *new = (NODE *) malloc(sizeof(NODE));
                 new->i = node->i + diff;
@@ -106,7 +106,7 @@ int DFS(int n) {
             }
         }
 
-        // If the remaining amount is 0 and we are at the end of val, return count of plus signs
+        // If the remaining amount is 0 and we are at the end of array, return count of plus signs
         else if (node->remaining - arr[node->i][node->j] == 0 && node->j == n - 1) {
             return node->count;
         }

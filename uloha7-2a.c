@@ -37,7 +37,7 @@ int main() {
             continue;
         }
 
-        // Clean the val and calculate the middle position
+        // Clean the array and calculate the middle position
         memset(arr, 0, sizeof(arr));
 
         mid = (N - 1) / 2;
