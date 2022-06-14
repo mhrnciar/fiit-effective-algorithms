@@ -113,7 +113,7 @@ int main() {
     // Array for the shortest path
     int *path = (int *) calloc (n, sizeof(int));
 
-    // Create first order as 1 -> 2 -> 3 -> ... -> n
+    // Create first order as 1 -> 2 -> 3 -> ... -> N
     for (int i = 2, j = 0; i <= n; i++) {
         str[j] = i;
         j++;

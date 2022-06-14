@@ -182,7 +182,7 @@ void closest_pair() {
         }
     }
 
-    printf("Dvojica prvkov so suctom najblizim k cislu 0 je: \n");
+    printf("Dvojica prvkov so suctom najblizim K cislu 0 je: \n");
     printf("[%d, %d]\n", first, second);
 }
 

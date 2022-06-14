@@ -30,3 +30,4 @@ add_executable(Uloha8-1 uloha8-1.c)
 add_executable(Uloha8-2 uloha8-2.c)
 
 add_executable(Bonus bonus.c)
+add_executable(Skuska skuska.c)
