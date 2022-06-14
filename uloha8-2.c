@@ -159,7 +159,7 @@ int main() {
         for (int i = 0; i < n; i++) {
             // Child -> child - create children twice, first as a food consumer, second as a drink consumer. There is
             // always only one connection, from the first node of one child, to its second node, which is located on
-            // the offset of the first node + the number of children (N)
+            // the offset of the first node + the number of children (n)
             capacity[f + i + 1][f + n + i + 1] = 1;
 
             scanf("%d %d", &f_count, &d_count);

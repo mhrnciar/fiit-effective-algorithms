@@ -2,7 +2,7 @@
  * Jakubko sa hral s kockami. Na každej kocke je nakreslená šípka doľava (označujeme <) alebo šípka doprava
  * (označujeme >). Nepárny počet kociek s nejakými šípkami je rozostavených do radu vedľa seba. Jakubko sa
  * hrá nasledovnú hru, vyberie si kocku, ktorá nie je na kraji a zoberie z radu vybranú kocku a susednú kocku
- * na ktorú vybraná kocka ukazuje. Následne Jakubko kocky prisunie K sebe, aby nezostala v rade medzera.
+ * na ktorú vybraná kocka ukazuje. Následne Jakubko kocky prisunie k sebe, aby nezostala v rade medzera.
  * Tento proces opakuje, až kým nezostane len jedna kocka. Otázka je, ktorá kocka (v pôvodnom poradí) môže
  * byť posledná.
  *

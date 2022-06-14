@@ -10,7 +10,7 @@
  *
  * Na výstup vypíšte paci ak sa Jakubkovi dané slovo určite bude páčiť, nepaci ak sa mu určite nebude páčiť
  * a neviem ak sa to nedá s istotou určiť.
- * Poznámka: Kľúčom K riešeniu je uvažovanie, aké znaky dosadiť za ? vo vstupe. Uvedomme si, že za každý
+ * Poznámka: Kľúčom k riešeniu je uvažovanie, aké znaky dosadiť za ? vo vstupe. Uvedomme si, že za každý
  * otáznik môžeme dosadiť alebo samohlásku alebo spoluhlásku, no ale potom vzhľadom na okolité písmenká je
  * možné, že už nutne vznikne postupnosť troch samohlások alebo piatich spoluhlások, a teda sa takéto cudzie
  * slovo bude Jakubkovi určite páčiť. Niekedy to nemusí byť jednoznačné (neviem), alebo sa to určite nedá

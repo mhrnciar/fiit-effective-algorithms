@@ -84,7 +84,7 @@ int main() {
     for (int i = 0; i < 6; i++) {
         printf("%d ", p1[i]);
     }
-    printf("\N");
+    printf("\n");
     for (int i = 0; i < 6; i++) {
         printf("%d ", p2[i]);
     }

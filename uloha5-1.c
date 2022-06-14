@@ -63,7 +63,7 @@ int main() {
         int min = 1000, max = 0, found = 0;
         int *arr = (int *) malloc(n * sizeof(int));
 
-        // Read N numbers from input while saving max and min
+        // Read n numbers from input while saving max and min
         for (int i = 0; i < n; i++) {
             scanf("%d", &arr[i]);
             if (arr[i] < min) {
@@ -75,7 +75,7 @@ int main() {
         }
 
         if (DEBUG) {
-            printf("N: %d, limit: %d\N", n, limit);
+            printf("n: %d, limit: %d\n", n, limit);
             for (int i = 0; i < n; i++) {
                 printf("%d ", arr[i]);
             }
@@ -83,7 +83,7 @@ int main() {
         }
 
         // If the difference between max and min is lower than limit,
-        // or there are only 2 exercises, print N (must solve all exercises)
+        // or there are only 2 exercises, print n (must solve all exercises)
         if (max - min < limit || n <= 2) {
             printf("%d\n", n);
             continue;
@@ -112,7 +112,7 @@ int main() {
             }
         }
 
-        // If best hasn't been found, print N
+        // If best hasn't been found, print n
         if (!found) {
             printf("%d\n", n);
         }
